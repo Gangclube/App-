@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hierarquia de Camadas</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden; /* Impede a barra de rolagem */
+      height: 100vh;
+      background: linear-gradient(135deg, #ff5db1, #8e44ad); /* Degradê animado */
+      background-size: 800% 800%;
+      animation: gradientAnimation 1.5s linear infinite;
+      position: relative;
+      z-index: 0; /* Definir a camada do degradê */
+    }
+
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* Imagem tt.png */
+    .background-image {
+      position: absolute;
+      top: 100%; /* Posição mais próxima do fundo */
+      left: 50%; /* Centraliza horizontalmente */
+      transform: translate(-50%, -80%); /* Mantém proporções enquanto posiciona abaixo */
+      max-width: 100%; /* Garante que não ultrapassa a largura da tela */
+      max-height: 100%; /* Garante que não ultrapassa a altura da tela */
+      object-fit: contain; /* Mantém proporções sem esticar */
+      z-index: 1; /* Acima do degradê */
+      pointer-events: none; /* Permite que clique passe para outros elementos */
+    }
+
+    /* Imagens gg{i}.png caindo */
+    .falling-image {
+      position: absolute;
+      top: -10%; /* Começa fora da tela */
+      left: calc(10% + 80% * var(--random-x)); /* Posição horizontal aleatória */
+      width: 60px; /* Tamanho das imagens gg */
+      animation: fallAnimation var(--duration) linear infinite;
+      opacity: 0.8; /* Transparência leve */
+      z-index: 2; /* Acima da imagem tt */
+    }
+
+    @keyframes fallAnimation {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh); /* Cai para fora da tela */
+        opacity: 0.5;
+      }
+    }
+    /* Logo no topo */
+    .logo {
+      position: absolute;
+      top: 20px; /* Distância do topo */
+      left: 50%; /* Centraliza horizontalmente */
+      transform: translateX(-50%); /* Garante centralização exata */
+      max-width: 300px; /* Limita o tamanho máximo da logo */
+      z-index: 3; /* Acima de todas as outras camadas */
+      pointer-events: none; /* Não interfere nas interações da página */
+    }
+
+    /* Borda com degradê animado entre branco e amarelo claro */
+    .border {
+      position: absolute;
+      top: 150px; /* Distância da borda superior do logo */
+      left: 20px; /* Distância de 20px da borda esquerda da página */
+      right: 20px; /* Distância de 20px da borda direita da página */
+      bottom: 60px; /* Distância de 60px da borda inferior */
+      background: linear-gradient(135deg, #ffffff, #e099c8); /* Degradê entre branco e amarelo claro */
+      background-size: 800% 800%;
+      animation: gradientAnimation 2.5s linear infinite; /* Animação do degradê */
+      border-radius: 20px; /* Bordas arredondadas */
+      z-index: 4; /* Acima das imagens gg e do logo */
+      padding: 20px;
+      height: 370px; /* Ajustada a altura da borda */
+    }
+
+    /* Título dentro da borda */
+    .border h2 {
+      text-align: center;
+      color: black;
+      font-size: 16px; /* Diminuir o tamanho do título */
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    /* Texto explicativo dentro da borda */
+    .border p {
+      text-align: center;
+      font-size: 12px; /* Diminuir o tamanho do texto */
+      color: red;
+      font-weight: normal;
+      margin-bottom: 15px;
+    }
+
+    /* Texto de atenção */
+    .attention-text {
+      text-align: center;
+      font-size: 14px;
+      color: #e74c3c;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    /* Botão dentro da borda */
+    .border .btn {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #ff5db1, #8e44ad);
+      border: none;
+      border-radius: 50px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      text-align: center;
+      position: relative;
+      overflow: hidden; /* Faz o degradê se mover dentro do botão */
+      transition: background 0.3s ease;
+    }
+
+    /* Degradê animado no botão */
+    .border .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 300%;
+      height: 300%;
+      background: linear-gradient(135deg, #ff5db1, #8e44ad);
+      animation: buttonGradient 1.5s linear infinite; /* Degradê mais rápido */
+      z-index: 1;
+    }
+
+    @keyframes buttonGradient {
+      0% {
+        transform: translateX(0);
+      }
+      50% {
+        transform: translateX(-50%);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    .border .btn span {
+      position: relative;
+      z-index: 2; /* Garante que o texto fique acima do degradê */
+    }
+
+    .border .btn:hover {
+      background: linear-gradient(135deg, #8e44ad, #ff5db1);
+    }
+
+    /* Estilo para as opções (checkbox) */
+    .border .options {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 20px;
+    }
+
+    .border .options label {
+      font-size: 12px; /* Reduzir o tamanho das opções */
+      color: black;
+      margin-bottom: 10px;
+      padding-left: 5px; /* Alinha os botões à esquerda com 5px de distância */
+    }
+
+    .border .options input {
+      margin-right: 10px;
+    }
+
+    .border .options input[type="radio"]:checked {
+      accent-color: #d41393 ;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Imagem tt.png -->
+  <img src="tt.png" alt="Imagem Fixa" class="background-image">
+
+  <!-- Imagens gg caindo -->
+  <script>
+    // Número de imagens gg para criar
+    const totalImages = 25;
+    const body = document.body;
+
+    for (let i = 1; i <= totalImages; i++) {
+      const img = document.createElement('img');
+      img.src = `gg${i}.png`; // Define o caminho da imagem (gg1.png até gg25.png)
+      img.className = 'falling-image';
+      img.style.setProperty('--random-x', Math.random().toFixed(2)); // Posição horizontal aleatória
+      img.style.setProperty('--duration', `${Math.random() * 4 + 3}s`); // Duração aleatória para a animação
+      body.appendChild(img); // Adiciona a imagem ao body
+    }
+  </script>
+
+  <!-- Logo no topo -->
+  <img src="logo.png" alt="Logo" class="logo">
+
+  <!-- Borda com degradê animado entre branco e amarelo claro -->
+  <div class="border">
+      
+
+
+  
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Estilo para o título */
+    h2 {
+      color: black; /* Alterado para branco */
+      font-family: Times;
+    }
+
+    /* Estilo para o texto explicativo */
+    p.explicacao {
+      color: black; /* Alterado para branco */
+      font-family: fantasy;
+    }
+
+    /* Estilo para as opções */
+    .options label {
+      color: black; /* Alterado para branco */
+      font-weight: bold;
+    }
+
+    /* Estilo para o texto de atenção */
+    .attention-text {
+      font-size: 8px; /* Tamanho menor */
+      color: black; /* Alterado para branco */
+      text-align: center;
+      font-weight: bold;
+    }
+
+    /* Estilo para o botão */
+    .btn {
+      position: relative; /* Permite ajustar a posição */
+      top: -5px; /* Move o botão 5px para cima */
+    }
+
+    .btn span {
+      font-weight: bold;
+      color: black; /* Alterado para branco */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Título -->
+  <h2>Torne-se membro já!</h2>
+
+  <!-- Texto explicativo -->
+  <p class="explicacao">Esse pacote é o acesso vitalício. Você só paga uma vez, e vai poder entrar salas, organizar encontros, interagir na DM com qualquer membro, além de todas as outras funcionalidades.</p>
+
+  <!-- Opções -->
+  <div class="options">
+    <label for="option1">
+      <input type="radio" id="option1" name="membership" value="1" checked> Membro nível Z INICIANTE 75,00R$
+    </label>
+    <label for="option2">
+      <input type="radio" id="option2" name="membership" value="2"> Membro nível B MÉDIO 115,00R$
+    </label>
+    <label for="option3">
+      <input type="radio" id="option3" name="membership" value="3"> Membro nível A EXPERIENTE 200,00R$
+    </label>
+    <label for="option4">
+      <input type="radio" id="option4" name="membership" value="4"> Membro nível S PROFISSIONAL 350,00R$
+    </label>
+  </div>
+
+  <!-- Texto de Atenção -->
+  <p class="attention-text">(ATENÇÃO: os emblemas membro B, A e S você pode conseguir com o tempo indo em encontros e organizando encontros. Isso é só pra contar vantagem quando você for organizar uma sala, e os membros vão dar preferência pra sua sala por sua pontuação)</p>
+
+  <!-- Botão -->
+  <button class="btn" onclick="redirectToLink()"><span>Torne-se membro agora</span></button>
+
+  <script>
+    function redirectToLink() {
+      // Verifica qual opção foi selecionada
+      const selectedOption = document.querySelector('input[name="membership"]:checked').value;
+
+      // Define os links para cada opção
+      let link = "";
+      switch(selectedOption) {
+        case "1":
+         link = "https://app.pushinpay.com.br/#/service/pay/9da89ca7-c69a-4009-84a6-9b1ba5500233";  // Link para o Membro Z INICIANTE
+        break;
+        case "2":
+          link = "https://app.pushinpay.com.br/#/service/pay/9da89de6-ecf5-45c0-bc03-8c571791aa8b";  // Link para o Membro B MÉDIO
+          break;
+        case "3":
+          link = "https://app.pushinpay.com.br/#/service/pay/9da89de6-ecf5-45c0-bc03-8c571791aa8b";  // Link para o Membro A EXPERIENTE
+          break;
+        case "4":
+          link = "https://app.pushinpay.com.br/#/service/pay/9da89de6-ecf5-45c0-bc03-8c571791aa8b";  // Link para o Membro S PROFISSIONAL
+          break;
+        default:
+          link = "https://app.pushinpay.com.br/#/service/pay/9da89ca7-c69a-4009-84a6-9b1ba5500233";  // Link padrão caso nenhum seja selecionado
+      }
+
+      // Redireciona para o link correspondente
+      window.location.href = link;
+    }
+  </script>
+
+</body>
+</html>

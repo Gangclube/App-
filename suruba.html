@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GangClub</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilo para a borda com degradê */
+        header {
+            background: #8e44ad;
+            height: var(--borda-altura, 30px);
+            border-bottom: 5px solid transparent;
+            background-image: linear-gradient(to right, #ff5db1, #8e44ad);
+            margin-top: var(--logo-top, 10px);
+        }
+        #logo {
+            width: 150px;
+            display: block;
+            margin: var(--logo-top, -30px) auto;
+            padding-top: var(--logo-padding-top, 10px);
+        }
+        /* Outros estilos */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000; /* Fundo preto */
+        }
+        /* Ícones sobrepostos */
+        #imagem-sobreposta,
+        #imagem-sobreposta2 {
+            position: absolute;
+            z-index: 1000; /* Ícones sobrepõem tudo, exceto o modal */
+            cursor: pointer; /* Cursor interativo */
+        }
+        #imagem-sobreposta {
+            top: 500px;
+            left: 260px;
+        }
+        #imagem-sobreposta2 {
+            top: 490px;
+            left: 10px;
+        }
+        /* Modal sobrepõe tudo */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            display: none;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 90%;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        .modal-content h2 {
+            margin-top: 0;
+        }
+        .modal-content p {
+            margin: 10px 0;
+        }
+        .modal-close {
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        /* Botão de fechar no modal */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Logo" id="logo">
+    </header>
+    <!-- Seletor de categorias -->
+    <nav id="categorias">
+        <div id="barra-pesquisa" class="hidden">
+            <input type="text" placeholder="Pesquisar...">
+        </div>
+        <ul>
+            <li><a href="suruba.html">Orgia</a></li>
+            <li><a href="suruba.html">Suruba</a></li>
+            <li><a href="suruba.html">4épar</a></li>
+            <li><a href="suruba.html">Troca de casal</a></li>
+            <li><a href="suruba.html">Voyeur</a></li>
+            <li><a href="suruba.html">Trisal</a></li>
+            <li><a href="suruba.html">Ménage</a></li>
+            <li><a href="suruba.html">Dual</a></li>
+        </ul>
+    </nav>
+    <div id="opcoes">
+        <button onclick="abrirModal()">Amigos</button>
+        <button onclick="abrirModal()">Favoritos</button>
+        <button onclick="abrirModal()">Top</button>
+        <button onclick="abrirModal()">Novatos</button>
+    </div>
+    <div class="postagem">
+        <div id="informacoes">
+            <button class="btn-verde" onclick="abrirModal()">Pedir para entrar</button>
+            <span class="num azul">6x</span>
+            <img src="sexos.png" alt="Ícones de sexo" id="sexos">
+            <span class="num rosa">4x</span>
+        </div>
+        <div id="tags">
+            <span>Sem taxa de motel</span>
+            <span>Min 2 camisinhas</span>
+            <span>Pegação liberada</span>
+            <span>Homo interações somente entre mulheres</span>
+            <span>Horário certo</span>
+            <span>Casa pessoal</span>
+        </div>
+        <div id="anfitriao">
+            <span>Anfitrião:</span>
+            <div id="perfil" onclick="abrirModal()">
+                <img src="pf1.png" alt="Perfil" id="imagem-perfil">
+            </div>
+            <span id="nome">PM Casado</span>
+            <span id="id">ID33542139</span>
+        </div>
+        <div id="imagem-sobreposta" onclick="abrirModal()">
+            <img src="na1.png" alt="Imagem sobreposta">
+        </div>
+        
+        <div id="imagem-sobreposta2" onclick="abrirModal()">
+            <img src="location.png" alt="Imagem sobreposta2">
+        </div>
+        
+        <div id="horario">
+            <span>Terça-feira</span>
+            <span>05:00 - 13:00</span>
+            <img src="data.png" alt="Ícone de calendário" id="calendario">
+        </div>
+        <!-- Imagem folha1.png agora dentro da postagem -->
+        <img src="fol.png" alt="Imagem de fundo" class="folha-postagem">
+    </div>
+    <!-- Modal -->
+   <div id="modal" class="modal">
+    <div class="modal-content">
+        <button class="close-btn" onclick="fecharModal()">X</button>
+        <h2>Atenção</h2>
+        <p>Você tentou acessar informações ou entrar em uma sala, essas ações são exclusivas para membros. Pague o seu passe e tenha acesso a todas as funcionalidades disponíveis.</p>
+        <a href="membro.html">
+            <button class="modal-close">Torne-se membro</button>
+        </a>
+    </div>
+</div>
+    <script>
+        // Funções de controle do modal
+        const modal = document.getElementById('modal');
+        function abrirModal() {
+            modal.style.display = 'flex';
+        }
+        function fecharModal() {
+            modal.style.display = 'none';
+        }
+    </script>
+</body>
+</style>
+</head>
+<body>
+   
+    <div class="postagem">
+        <div id="informacoes">
+            <button class="btn-verde" onclick="abrirModal()">Pedir para entrar</button>
+            <span class="num azul">6x</span>
+            <img src="sexos.png" alt="Ícones de sexo" id="sexos">
+            <span class="num rosa">4x</span>
+        </div>
+        <div id="tags">
+<span>Homo interações somente entre mulheres</span>
+<span>Min 2 camisinhas</span>
+<span>Sem pegação</span>
+<span>Casa pessoal</span>
+<span>Horário certo</span>
+        </div>
+        <div id="anfitriao">
+            <span>Anfitrião:</span>
+            <div id="perfil" onclick="abrirModal()">
+                <img src="jumara12.jpg" alt="Perfil" id="imagem-perfil">
+            </div>
+            <span id="nome">Jumara12</span>
+            <span id="id">ID33748585858</span>
+        </div>
+        <div id="imagem-sobreposta3" onclick="abrirModal()">
+            <img src="nvs71.png" alt="Imagem sobreposta">
+        </div>
+        
+        <div id="imagem-sobreposta4" onclick="abrirModal()">
+            <img src="location.png" alt="Imagem sobreposta2">
+        </div>
+        
+        <div id="horario">
+            <span>Sábado</span>
+            <span>20:00 - 22:00</span>
+            <img src="data.png" alt="Ícone de calendário" id="calendario">
+        </div>
+        <!-- Imagem folha1.png agora dentro da postagem -->
+        <img src="folha2.png" alt="Imagem de fundo" class="folha-postagem">
+    </div>
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="fecharModal()">X</button>
+            <h2>Atenção</h2>
+            <p>Você tentou acessar informações ou entrar em uma sala, essas ações são exclusivas para membros. Pague o seu passe e tenha acesso a todas as funcionalidades disponíveis.</p>
+            <button class="modal-close" onclick="fecharModal()">Torne-se membro</button>
+        </div>
+    </div>
+    <script>
+        // Funções de controle do modal
+        const modal = document.getElementById('modal');
+        function abrirModal() {
+            modal.style.display = 'flex';
+        }
+        function fecharModal() {
+            modal.style.display = 'none';
+        }
+    
+    </script>
+    
+    </style>
+</head>
+<body>
+    <div class="postagem">
+        <div id="informacoes">
+            <button class="btn-verde" onclick="abrirModal()">Pedir para entrar</button>
+            <span class="num azul">5x</span>
+            <img src="sexos.png" alt="Ícones de sexo" id="sexos">
+            <span class="num rosa">5x</span>
+        </div>
+        <div id="tags">
+            <span>Min 2 camisinhas</span>
+            <span>Pegação liberada</span>
+            <span>Motel dividido</span>
+            <span>Horário certo</span>
+        </div>
+        <div id="anfitriao">
+            <span>Anfitrião:</span>
+            <div id="perfil" onclick="abrirModal()">
+                <img src="casada aventureira.jpg" alt="Perfil" id="imagem-perfil">
+            </div>
+            <span id="nome">casada aventureira</span>
+            <span id="id">ID33748585859</span>
+        </div>
+        <div id="imagem-sobreposta5" onclick="abrirModal()">
+            <img src="nvb31.png" alt="Imagem sobreposta">
+        </div>
+        
+        <div id="imagem-sobreposta6" onclick="abrirModal()">
+            <img src="location.png" alt="Imagem sobreposta2">
+        </div>
+        
+        <div id="horario">
+            <span>domingo</span>
+            <span>11h - 13h</span>
+            <img src="data.png" alt="Ícone de calendário" id="calendario">
+        </div>
+        <!-- Imagem folha3.png agora dentro da postagem -->
+        <img src="folha3.png" alt="Imagem de fundo" class="folha-postagem">
+    </div>
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="fecharModal()">X</button>
+            <h2>Atenção</h2>
+            <p>Você tentou acessar informações ou entrar em uma sala, essas ações são exclusivas para membros. Pague o seu passe e tenha acesso a todas as funcionalidades disponíveis.</p>
+            <button class="modal-close" onclick="fecharModal()">Torne-se membro</button>
+        </div>
+    </div>
+    <script>
+        // Funções de controle do modal
+        const modal = document.getElementById('modal');
+        function abrirModal() {
+            modal.style.display = 'flex';
+        }
+        function fecharModal() {
+            modal.style.display = 'none';
+        }
+    </script>
+    
+    </style>
+</head>
+<body>
+   
+</style>
+</head>
+<body>
+   
+    
+    <div class="postagem">
+    <div id="informacoes">
+        <button class="btn-verde" onclick="abrirModal()">Pedir para entrar</button>
+        <span class="num azul">7x</span>
+        <img src="sexos.png" alt="Ícones de sexo" id="sexos">
+        <span class="num rosa">5x</span>
+    </div>
+    <div id="tags">
+        <span>Homo interações somente entre mulheres</span>
+        <span>Min 2 camisinhas</span>
+        <span>Pegação liberada</span>
+        <span>Horário certo</span>
+        <span>Casa pessoal</span>
+    </div>
+    <div id="anfitriao">
+        <span>Anfitrião:</span>
+        <div id="perfil" onclick="abrirModal()">
+            <img src="ruiva.jpg" alt="Perfil" id="imagem-perfil">
+        </div>
+        <span id="nome">ruiva</span>
+        <span id="id">ID33748585860</span>
+    </div>
+    <div id="imagem-sobreposta7" onclick="abrirModal()">
+        <img src="nvs78.png" alt="Imagem sobreposta">
+    </div>
+    
+    <div id="imagem-sobreposta8" onclick="abrirModal()">
+        <img src="location.png" alt="Imagem sobreposta2">
+    </div>
+    
+    <div id="horario">
+        <span>Quarta</span>
+        <span>00.00 - 01.00</span>
+        <img src="data.png" alt="Ícone de calendário" id="calendario">
+    </div>
+    <!-- Imagem folha4.png agora dentro da postagem -->
+    <img src="folha4.png" alt="Imagem de fundo" class="folha-postagem">
+</div>
+<!-- Modal -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <button class="close-btn" onclick="fecharModal()">X</button>
+        <h2>Atenção</h2>
+        <p>Você tentou acessar informações ou entrar em uma sala, essas ações são exclusivas para membros. Pague o seu passe e tenha acesso a todas as funcionalidades disponíveis.</p>
+        <button class="modal-close" onclick="fecharModal()">Torne-se membro</button>
+    </div>
+</div>
+<script>
+    // Funções de controle do modal
+    const modal = document.getElementById('modal');
+    function abrirModal() {
+        modal.style.display = 'flex';
+    }
+    function fecharModal() {
+        modal.style.display = 'none';
+    }
+    
+</script>
+    
+    <div class="postagem">
+    <div id="informacoes">
+        <button class="btn-verde" onclick="abrirModal()">Pedir para entrar</button>
+        <span class="num azul">5x</span>
+        <img src="sexos.png" alt="Ícones de sexo" id="sexos">
+        <span class="num rosa">5x</span>
+    </div>
+    <div id="tags">
+        <span>Homo interações somente entre mulheres</span>
+        <span>Min 2 camisinhas</span>
+        <span>Motel dividido</span>
+    </div>
+    <div id="anfitriao">
+        <span>Anfitrião:</span>
+        <div id="perfil" onclick="abrirModal()">
+            <img src="paumoreno.jpg" alt="Perfil" id="imagem-perfil">
+        </div>
+        <span id="nome">paumoreno</span>
+        <span id="id">ID33748585861</span>
+    </div>
+    <div id="imagem-sobreposta29" onclick="abrirModal()">
+        <img src="nvb45.png" alt="Imagem sobreposta">
+    </div>
+    
+    <div id="imagem-sobreposta30" onclick="abrirModal()">
+        <img src="location.png" alt="Imagem sobreposta2">
+    </div>
+    
+    <div id="horario">
+        <span>Sem horário</span>
+        <img src="data.png" alt="Ícone de calendário" id="calendario">
+    </div>
+    <!-- Imagem folha5.png agora dentro da postagem -->
+    <img src="folha5.png" alt="Imagem de fundo" class="folha-postagem">
+</div>
+<!-- Modal -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <button class="close-btn" onclick="fecharModal()">X</button>
+        <h2>Atenção</h2>
+        <p>Você tentou acessar informações ou entrar em uma sala, essas ações são exclusivas para membros. Pague o seu passe e tenha acesso a todas as funcionalidades disponíveis.</p>
+        <button class="modal-close" onclick="fecharModal()">Torne-se membro</button>
+    </div>
+</div>
+<script>
+    // Funções de controle do modal
+    const modal = document.getElementById('modal');
+    function abrirModal() {
+        modal.style.display = 'flex';
+    }
+    function fecharModal() {
+        modal.style.display = 'none';
+    }
+    
+</script>
+    
+    </style>
+</head>
+<body>
+    
+<div class="postagem">
+    <div id="informacoes">
+        <button class="btn-verde" onclick="abrirModal()">Pedir para entrar</button>
+        <span class="num azul">4x</span>
+        <img src="sexos.png" alt="Ícones de sexo" id="sexos">
+        <span class="num rosa">2x</span>
+    </div>
+    <div id="tags">
+        <span>Homo interações somente entre mulheres</span>
+        <span>Min 2 camisinhas</span>
+        <span>Pegação liberada</span>
+        <span>Motel dividido</span>
+        <span>Festinha</span>
+        <span>Público jovem</span>
+    </div>
+    <div id="anfitriao">
+        <span>Anfitrião:</span>
+        <div id="perfil" onclick="abrirModal()">
+            <img src="babyzinha01.jpg" alt="Perfil" id="imagem-perfil">
+        </div>
+        <span id="nome">babyzinha01</span>
+        <span id="id">ID33748585862</span>
+    </div>
+    <div id="imagem-sobreposta9" onclick="abrirModal()">
+        <img src="nvs78.png" alt="Imagem sobreposta">
+    </div>
+    
+    <div id="imagem-sobreposta10" onclick="abrirModal()">
+        <img src="location.png" alt="Imagem sobreposta2">
+    </div>
+    
+    <div id="horario">
+        <span>Sem horário</span>
+        <img src="data.png" alt="Ícone de calendário" id="calendario">
+    </div>
+    <!-- Imagem folha6.png agora dentro da postagem -->
+    <img src="folha6.png" alt="Imagem de fundo" class="folha-postagem">
+</div>
+<!-- Modal -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <button class="close-btn" onclick="fecharModal()">X</button>
+        <h2>Atenção</h2>
+        <p>Você tentou acessar informações ou entrar em uma sala, essas ações são exclusivas para membros. Pague o seu passe e tenha acesso a todas as funcionalidades disponíveis.</p>
+        <button class="modal-close" onclick="fecharModal()">Torne-se membro</button>
+    </div>
+</div>
+<script>
+    // Funções de controle do modal
+    const modal = document.getElementById('modal');
+    function abrirModal() {
+        modal.style.display = 'flex';
+    }
+    function fecharModal() {
+        modal.style.display = 'none';
+    }
+    
+</script>
+    
+    </style>
+</head>
+<body>
+<div class="postagem">
+    <div id="informacoes">
+        <button class="btn-verde" onclick="abrirModal()">Pedir para entrar</button>
+        <span class="num azul">8x</span>
+        <img src="sexos.png" alt="Ícones de sexo" id="sexos">
+        <span class="num rosa">0x</span>
+    </div>
+    <div id="tags">
+        <span>LGBT</span>
+        <span>Homo interações somente entre homens</span>
+        <span>Min 2 camisinhas</span>
+        <span>Casa pessoal</span>
+        <span>Horário certo</span>
+    </div>
+    <div id="anfitriao">
+        <span>Anfitrião:</span>
+        <div id="perfil" onclick="abrirModal()">
+            <img src="hércules.jpg" alt="Perfil" id="imagem-perfil">
+        </div>
+        <span id="nome">hércules</span>
+        <span id="id">ID33748585863</span>
+    </div>
+    <div id="imagem-sobreposta11" onclick="abrirModal()">
+        <img src="nvs90.png" alt="Imagem sobreposta">
+    </div>
+    
+    <div id="imagem-sobreposta12" onclick="abrirModal()">
+        <img src="location.png" alt="Imagem sobreposta2">
+    </div>
+    
+    <div id="horario">
+        <span>Segunda</span>
+        <span>04:00 - 06:00</span>
+        <img src="data.png" alt="Ícone de calendário" id="calendario">
+    </div>
+    <!-- Imagem folha7.png agora dentro da postagem -->
+    <img src="folha7.png" alt="Imagem de fundo" class="folha-postagem">
+</div>
+<!-- Modal -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <button class="close-btn" onclick="fecharModal()">X</button>
+        <h2>Atenção</h2>
+        <p>Você tentou acessar informações ou entrar em uma sala, essas ações são exclusivas para membros. Pague o seu passe e tenha acesso a todas as funcionalidades disponíveis.</p>
+        <button class="modal-close" onclick="fecharModal()">Torne-se membro</button>
+    </div>
+</div>
+<script>
+    // Funções de controle do modal
+    const modal = document.getElementById('modal');
+    function abrirModal() {
+        modal.style.display = 'flex';
+    }
+    function fecharModal() {
+        modal.style.display = 'none';
+    }
+    
+</script>
+    
+    </style>
+</head>
+<body>
+<div class="postagem">
+    <div id="informacoes">
+        <button class="btn-verde" onclick="abrirModal()">Pedir para entrar</button>
+        <span class="num azul">8x</span>
+        <img src="sexos.png" alt="Ícones de sexo" id="sexos">
+        <span class="num rosa">8x</span>
+    </div>
+    <div id="tags">
+        <span>Homo interações somente entre mulheres</span>
+        <span>Min 2 camisinhas</span>
+        <span>Casa pessoal</span>
+    </div>
+    <div id="anfitriao">
+        <span>Anfitrião:</span>
+        <div id="perfil" onclick="abrirModal()">
+            <img src="dotado22cm.jpg" alt="Perfil" id="imagem-perfil">
+        </div>
+        <span id="nome">dotado22cm</span>
+        <span id="id">ID33748585864</span>
+    </div>
+    <div id="imagem-sobreposta13" onclick="abrirModal()">
+        <img src="nvz.png" alt="Imagem sobreposta">
+    </div>
+    
+    <div id="imagem-sobreposta14" onclick="abrirModal()">
+        <img src="location.png" alt="Imagem sobreposta2">
+    </div>
+    
+    <div id="horario">
+        <span>Sem horário</span>
+        <img src="data.png" alt="Ícone de calendário" id="calendario">
+    </div>
+    <!-- Imagem folha8.png agora dentro da postagem -->
+    <img src="folha8.png" alt="Imagem de fundo" class="folha-postagem">
+</div>
+<!-- Modal -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <button class="close-btn" onclick="fecharModal()">X</button>
+        <h2>Atenção</h2>
+        <p>Você tentou acessar informações ou entrar em uma sala, essas ações são exclusivas para membros. Pague o seu passe e tenha acesso a todas as funcionalidades disponíveis.</p>
+        <button class="modal-close" onclick="fecharModal()">Torne-se membro</button>
+    </div>
+</div>
+<script>
+    // Funções de controle do modal
+    const modal = document.getElementById('modal');
+    function abrirModal() {
+        modal.style.display = 'flex';
+    }
+    function fecharModal() {
+        modal.style.display = 'none';
+    }
+    
+</script>
+    
+    </style>
+</head>
+<body>
+<div class="postagem">
+    <div id="informacoes">
+        <button class="btn-verde" onclick="abrirModal()">Pedir para entrar</button>
+        <span class="num azul">5x</span>
+        <img src="sexos.png" alt="Ícones de sexo" id="sexos">
+        <span class="num rosa">5x</span>
+    </div>
+    <div id="tags">
+        <span>Homo interações somente entre mulheres</span>
+        <span>Min 2 camisinhas</span>
+        <span>Motel dividido</span>
+        <span>Horário certo</span>
+    </div>
+    <div id="anfitriao">
+        <span>Anfitrião:</span>
+        <div id="perfil" onclick="abrirModal()">
+            <img src="amordasuavida.jpg" alt="Perfil" id="imagem-perfil">
+        </div>
+        <span id="nome">amor da sua vida</span>
+        <span id="id">ID33748585865</span>
+    </div>
+    <div id="imagem-sobreposta15" onclick="abrirModal()">
+        <img src="nvz.png" alt="Imagem sobreposta">
+    </div>
+    
+    <div id="imagem-sobreposta16" onclick="abrirModal()">
+        <img src="location.png" alt="Imagem sobreposta2">
+    </div>
+    
+    <div id="horario">
+        <span>Sexta-feira</span>
+        <span>19:00 - 21:00</span>
+        <img src="data.png" alt="Ícone de calendário" id="calendario">
+    </div>
+    <!-- Imagem folha9.png agora dentro da postagem -->
+    <img src="folha9.png" alt="Imagem de fundo" class="folha-postagem">
+</div>
+<!-- Modal -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <button class="close-btn" onclick="fecharModal()">X</button>
+        <h2>Atenção</h2>
+        <p>Você tentou acessar informações ou entrar em uma sala, essas ações são exclusivas para membros. Pague o seu passe e tenha acesso a todas as funcionalidades disponíveis.</p>
+        <button class="modal-close" onclick="fecharModal()">Torne-se membro</button>
+    </div>
+</div>
+<script>
+    // Funções de controle do modal
+    const modal = document.getElementById('modal');
+    function abrirModal() {
+        modal.style.display = 'flex';
+    }
+    function fecharModal() {
+        modal.style.display = 'none';
+    }
+    
+</script>
+    
+    </style>
+</head>
+<body>
+<div class="postagem">
+    <div id="informacoes">
+        <button class="btn-verde" onclick="abrirModal()">Pedir para entrar</button>
+        <span class="num azul">4x</span>
+        <img src="sexos.png" alt="Ícones de sexo" id="sexos">
+        <span class="num rosa">2x</span>
+    </div>
+    <div id="tags">
+        <span>Homo interações somente entre mulheres</span>
+        <span>Pessoas maduras</span>
+        <span>Min 2 camisinhas</span>
+        <span>Casa pessoal</span>
+        <span>Horário certo</span>
+    </div>
+    <div id="anfitriao">
+        <span>Anfitrião:</span>
+        <div id="perfil" onclick="abrirModal()">
+            <img src="mulherãodaporra.jpg" alt="Perfil" id="imagem-perfil">
+        </div>
+        <span id="nome">mulherão da porra</span>
+        <span id="id">ID33748585866</span>
+    </div>
+    <div id="imagem-sobreposta17" onclick="abrirModal()">
+        <img src="nva61.png" alt="Imagem sobreposta">
+    </div>
+    
+    <div id="imagem-sobreposta18" onclick="abrirModal()">
+        <img src="location.png" alt="Imagem sobreposta2">
+    </div>
+    
+    <div id="horario">
+        <span>Sábado</span>
+        <span>20:00 - 22:00</span>
+        <img src="data.png" alt="Ícone de calendário" id="calendario">
+    </div>
+    <!-- Imagem folha10.png agora dentro da postagem -->
+    <img src="folha10.png" alt="Imagem de fundo" class="folha-postagem">
+</div>
+<!-- Modal -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <button class="close-btn" onclick="fecharModal()">X</button>
+        <h2>Atenção</h2>
+        <p>Você tentou acessar informações ou entrar em uma sala, essas ações são exclusivas para membros. Pague o seu passe e tenha acesso a todas as funcionalidades disponíveis.</p>
+        <button class="modal-close" onclick="fecharModal()">Torne-se membro</button>
+    </div>
+</div>
+<script>
+    // Funções de controle do modal
+    const modal = document.getElementById('modal');
+    function abrirModal() {
+        modal.style.display = 'flex';
+    }
+    function fecharModal() {
+        modal.style.display = 'none';
+    }
+    
+</script>
+    
+    </style>
+</head>
+<body>
+<div class="postagem">
+    <div id="informacoes">
+        <button class="btn-verde" onclick="abrirModal()">Pedir para entrar</button>
+        <span class="num azul">0x</span>
+        <img src="sexos.png" alt="Ícones de sexo" id="sexos">
+        <span class="num rosa">6x</span>
+    </div>
+    <div id="tags">
+        <span>LGBT</span>
+        <span>Homo interações somente entre mulheres</span>
+        <span>Min 2 camisinhas</span>
+        <span>Motel dividido</span>
+        <span>Horário certo</span>
+    </div>
+    <div id="anfitriao">
+        <span>Anfitrião:</span>
+        <div id="perfil" onclick="abrirModal()">
+            <img src="bia12.jpg" alt="Perfil" id="imagem-perfil">
+        </div>
+        <span id="nome">bia12</span>
+        <span id="id">ID33748585867</span>
+    </div>
+    <div id="imagem-sobreposta19" onclick="abrirModal()">
+        <img src="nva58.png" alt="Imagem sobreposta">
+    </div>
+    
+    <div id="imagem-sobreposta20" onclick="abrirModal()">
+        <img src="location.png" alt="Imagem sobreposta2">
+    </div>
+    
+    <div id="horario">
+        <span>Domingo</span>
+        <span>21:00 - 23:00</span>
+        <img src="data.png" alt="Ícone de calendário" id="calendario">
+    </div>
+    <!-- Imagem folha11.png agora dentro da postagem -->
+    <img src="folha11.png" alt="Imagem de fundo" class="folha-postagem">
+</div>
+<!-- Modal -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <button class="close-btn" onclick="fecharModal()">X</button>
+        <h2>Atenção</h2>
+        <p>Você tentou acessar informações ou entrar em uma sala, essas ações são exclusivas para membros. Pague o seu passe e tenha acesso a todas as funcionalidades disponíveis.</p>
+        <button class="modal-close" onclick="fecharModal()">Torne-se membro</button>
+    </div>
+</div>
+<script>
+    // Funções de controle do modal
+    const modal = document.getElementById('modal');
+    function abrirModal() {
+        modal.style.display = 'flex';
+    }
+    function fecharModal() {
+        modal.style.display = 'none';
+    }
+    
+</script>
+    
+    </style>
+</head>
+<body>
+<div class="postagem">
+    <div id="informacoes">
+        <button class="btn-verde" onclick="abrirModal()">Pedir para entrar</button>
+        <span class="num azul">8x</span>
+        <img src="sexos.png" alt="Ícones de sexo" id="sexos">
+        <span class="num rosa">0x</span>
+    </div>
+    <div id="tags">
+        <span>LGBT</span>
+        <span>Homo interações somente entre homens</span>
+        <span>Motel dividido</span>
+    </div>
+    <div id="anfitriao">
+        <span>Anfitrião:</span>
+        <div id="perfil" onclick="abrirModal()">
+            <img src="machodominador.jpg" alt="Perfil" id="imagem-perfil">
+        </div>
+        <span id="nome">macho dominador</span>
+        <span id="id">ID33748585868</span>
+    </div>
+    <div id="imagem-sobreposta21" onclick="abrirModal()">
+        <img src="nvb18.png" alt="Imagem sobreposta">
+    </div>
+    
+    <div id="imagem-sobreposta22" onclick="abrirModal()">
+        <img src="location.png" alt="Imagem sobreposta2">
+    </div>
+    
+    <div id="horario">
+        <span>Sem horário</span>
+        <img src="data.png" alt="Ícone de calendário" id="calendario">
+    </div
+    <!-- Imagem folha12.png agora dentro da postagem -->
+    <img src="folha12.png" alt="Imagem de fundo" class="folha-postagem">
+</div>
+<!-- Modal -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <button class="close-btn" onclick="fecharModal()">X</button>
+        <h2>Atenção</h2>
+        <p>Você tentou acessar informações ou entrar em uma sala, essas ações são exclusivas para membros. Pague o seu passe e tenha acesso a todas as funcionalidades disponíveis.</p>
+        <button class="modal-close" onclick="fecharModal()">Torne-se membro</button>
+    </div>
+</div>
+<script>
+    // Funções de controle do modal
+    const modal = document.getElementById('modal');
+    function abrirModal() {
+        modal.style.display = 'flex';
+    }
+    function fecharModal() {
+        modal.style.display = 'none';
+    }
+    
+    
+</script>
+    
+    </style>
+</head>
+<body>
+<div class="postagem">
+    <div id="informacoes">
+        <button class="btn-verde" onclick="abrirModal()">Pedir para entrar</button>
+        <span class="num azul">4x</span>
+        <img src="sexos.png" alt="Ícones de sexo" id="sexos">
+        <span class="num rosa">4x</span>
+    </div>
+    <div id="tags">
+        <span>Homo interações somente entre mulheres</span>
+        <span>Min 2 camisinhas</span>
+        <span>Motel dividido</span>
+        <span>Público jovem</span>
+        <span>Pessoas maduras</span>
+        <span>Horário certo</span>
+    </div>
+    <div id="anfitriao">
+        <span>Anfitrião:</span>
+        <div id="perfil" onclick="abrirModal()">
+            <img src="novinho10.jpg" alt="Perfil" id="imagem-perfil">
+        </div>
+        <span id="nome">novinho 10</span>
+        <span id="id">ID33748585869</span>
+    </div>
+    <div id="imagem-sobreposta23" onclick="abrirModal()">
+        <img src="nvz.png" alt="Imagem sobreposta">
+    </div>
+    
+    <div id="imagem-sobreposta24" onclick="abrirModal()">
+        <img src="location.png" alt="Imagem sobreposta2">
+    </div>
+    
+    <div id="horario">
+        <span>Sábado</span>
+        <span>00:00 - 05:00</span>
+        <img src="data.png" alt="Ícone de calendário" id="calendario">
+    </div>
+    <!-- Imagem folha13.png agora dentro da postagem -->
+    <img src="folha13.png" alt="Imagem de fundo" class="folha-postagem">
+</div>
+<!-- Modal -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <button class="close-btn" onclick="fecharModal()">X</button>
+        <h2>Atenção</h2>
+        <p>Você tentou acessar informações ou entrar em uma sala, essas ações são exclusivas para membros. Pague o seu passe e tenha acesso a todas as funcionalidades disponíveis.</p>
+        <button class="modal-close" onclick="fecharModal()">Torne-se membro</button>
+    </div>
+</div>
+<script>
+    // Funções de controle do modal
+    const modal = document.getElementById('modal');
+    function abrirModal() {
+        modal.style.display = 'flex';
+    }
+    function fecharModal() {
+        modal.style.display = 'none';
+    }
+    
+</script>
+    
+    </style>
+</head>
+<body>
+<div class="postagem">
+    <div id="informacoes">
+        <button class="btn-verde" onclick="abrirModal()">Pedir para entrar</button>
+        <span class="num azul">5x</span>
+        <img src="sexos.png" alt="Ícones de sexo" id="sexos">
+        <span class="num rosa">5x</span>
+    </div>
+    <div id="tags">
+        <span>Homo interações somente entre mulheres</span>
+        <span>Min 2 camisinhas</span>
+        <span>Casa pessoal</span>
+        <span>Horário certo</span>
+    </div>
+    <div id="anfitriao">
+        <span>Anfitrião:</span>
+        <div id="perfil" onclick="abrirModal()">
+            <img src="ribeiro.jpg" alt="Perfil" id="imagem-perfil">
+        </div>
+        <span id="nome">ribeiro</span>
+        <span id="id">ID33748585870</span>
+    </div>
+    <div id="imagem-sobreposta25" onclick="abrirModal()">
+        <img src="nvb30.png" alt="Imagem sobreposta">
+    </div>
+    
+    <div id="imagem-sobreposta26" onclick="abrirModal()">
+        <img src="location.png" alt="Imagem sobreposta2">
+    </div>
+    
+    <div id="horario">
+        <span>Domingo</span>
+        <span>14:00 - 16:00</span>
+        <img src="data.png" alt="Ícone de calendário" id="calendario">
+    </div>
+    <!-- Imagem folha14.png agora dentro da postagem -->
+    <img src="folha14.png" alt="Imagem de fundo" class="folha-postagem">
+</div>
+<!-- Modal -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <button class="close-btn" onclick="fecharModal()">X</button>
+        <h2>Atenção</h2>
+        <p>Você tentou acessar informações ou entrar em uma sala, essas ações são exclusivas para membros. Pague o seu passe e tenha acesso a todas as funcionalidades disponíveis.</p>
+        <button class="modal-close" onclick="fecharModal()">Torne-se membro</button>
+    </div>
+</div>
+<script>
+    // Funções de controle do modal
+    const modal = document.getElementById('modal');
+    function abrirModal() {
+        modal.style.display = 'flex';
+    }
+    function fecharModal() {
+        modal.style.display = 'none';
+    }
+    
+    
+</script>
+    
+    </style>
+</head>
+<body>
+<div class="postagem">
+    <div id="informacoes">
+        <button class="btn-verde" onclick="abrirModal()">Pedir para entrar</button>
+        <span class="num azul">3x</span>
+        <img src="sexos.png" alt="Ícones de sexo" id="sexos">
+        <span class="num rosa">2x</span>
+    </div>
+    <div id="tags">
+        <span>Homo interações somente entre mulheres</span>
+        <span>Min 2 camisinhas</span>
+        <span>Motel dividido</span>
+    </div>
+    <div id="anfitriao">
+        <span>Anfitrião:</span>
+        <div id="perfil" onclick="abrirModal()">
+            <img src="florzinha1.jpg" alt="Perfil" id="imagem-perfil">
+        </div>
+        <span id="nome">florzinha1</span>
+        <span id="id">ID33748585871</span>
+    </div>
+    <div id="imagem-sobreposta27" onclick="abrirModal()">
+        <img src="nva54.png" alt="Imagem sobreposta">
+    </div>
+    
+    <div id="imagem-sobreposta28" onclick="abrirModal()">
+        <img src="location.png" alt="Imagem sobreposta2">
+    </div>
+    
+    <div id="horario">
+        <span>Sem horário</span>
+        <img src="data.png" alt="Ícone de calendário" id="calendario">
+    </div>
+    <!-- Imagem folha15.png agora dentro da postagem -->
+    <img src="folha15.png" alt="Imagem de fundo" class="folha-postagem">
+</div>
+<!-- Modal -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <button class="close-btn" onclick="fecharModal()">X</button>
+        <h2>Atenção</h2>
+        <p>Você tentou acessar informações ou entrar em uma sala, essas ações são exclusivas para membros. Pague o seu passe e tenha acesso a todas as funcionalidades disponíveis.</p>
+        <button class="modal-close" onclick="fecharModal()">Torne-se membro</button>
+    </div>
+</div>
+<script>
+    // Funções de controle do modal
+    const modal = document.getElementById('modal');
+    function abrirModal() {
+        modal.style.display = 'flex';
+    }
+    function fecharModal() {
+        modal.style.display = 'none';
+    }
+</script>
+<script src="modal-handler.js"></script>
+</html>

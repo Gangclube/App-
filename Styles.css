@@ -1,0 +1,606 @@
+/* Estilos Gerais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000; /* Fundo preto */
+}
+
+/* Cabeçalho */
+header {
+    background-color: #ff0066;
+    text-align: center;
+    padding: 10px 0;
+}
+
+#logo {
+    width: 150px;
+}
+
+/* Seletor de categorias */
+#categorias {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    overflow-x: auto;
+}
+
+#categorias ul {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#categorias li {
+    display: flex;
+    align-items: center;
+    height: 40px;
+}
+
+#categorias a {
+    text-decoration: none;
+    padding: 5px 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    color: #333;
+}
+
+.categoria-item {
+    display: flex;
+    align-items: center;
+}
+
+.lupa-container {
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.lupa {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+#barra-pesquisa {
+    display: none;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#barra-pesquisa:not(.hidden) {
+    display: block;
+}
+
+#categorias.expanded ul {
+    margin-top: 55px;
+}
+
+/* Opções */
+#opcoes {
+    display: flex;
+    justify-content: space-around;
+    background-color: #fff;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+#opcoes button {
+    padding: 10px;
+    background-color: #ff0066;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Banner */
+#banner {
+    position: relative;
+    text-align: center;
+}
+
+#imagem-banner {
+    width: 100%;
+}
+
+#icone-banner {
+    position: absolute;
+    top: 180px;
+    right: 10px;
+    width: 100px;
+}
+
+/* Caixa de Postagem */
+.postagem {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 95%;
+    max-width: 800px;
+    box-sizing: border-box;
+}
+
+/* Informações */
+#informacoes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+#sexos {
+    width: 59px;
+}
+
+.num {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.azul {
+    color: blue;
+}
+
+.rosa {
+    color: pink;
+}
+
+/* Botão Pedir para Entrar */
+#informacoes .btn-verde {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#informacoes .btn-verde:hover {
+    background-color: #218838;
+}
+
+/* Tags */
+#tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+#tags span {
+    background-color: #eee;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* Anfitrião */
+#anfitriao {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    flex-direction: column; /* Alinha os elementos em coluna */
+}
+
+#imagem-sobreposta {
+    position: absolute;
+    top: 50px; /* Controla o movimento para cima e para baixo */
+    left: 260px; /* Controla o movimento para esquerda e direita */
+    z-index: 9999; /* Garante que a imagem fique sobre os outros elementos */
+}
+
+#imagem-sobreposta img {
+    width: 100px; /* Ajuste o tamanho horizontal da imagem */
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+#imagem-sobreposta2 {
+    position: absolute;
+    top: 600px; /* Controla o movimento para cima e para baixo */
+    left: 10px; /* Controla o movimento para esquerda e direita */
+    z-index: 9999; /* Garante que a imagem fique sobre os outros elementos */
+}
+
+#imagem-sobreposta2 img {
+    width: 100px; /* Ajuste o tamanho horizontal da imagem */
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+
+#imagem-sobreposta3 {
+    position: absolute;
+    top: 1150px; /* Controla o movimento para cima e para baixo */
+    left: 260px; /* Controla o movimento para esquerda e direita */
+    z-index: 9999; /* Garante que a imagem fique sobre os outros elementos */
+}
+
+#imagem-sobreposta3 img {
+    width: 100px; /* Ajuste o tamanho horizontal da imagem */
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+
+#imagem-sobreposta4 {
+    position: absolute;
+    top: 1140px; /* Controla o movimento para cima e para baixo */
+    left: 10px; /* Controla o movimento para esquerda e direita */
+    z-index: 9999; /* Garante que a imagem fique sobre os outros elementos */
+}
+
+#imagem-sobreposta4 img {
+    width: 100px; /* Ajuste o tamanho horizontal da imagem */
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+
+#imagem-sobreposta5 {
+    position: absolute;
+    top: 1880px; /* Controla o movimento para cima e para baixo */
+    left: 260px; /* Controla o movimento para esquerda e direita */
+    z-index: 9999; /* Garante que a imagem fique sobre os outros elementos */
+}
+
+#imagem-sobreposta5 img {
+    width: 100px; /* Ajuste o tamanho horizontal da imagem */
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+
+#imagem-sobreposta6 {
+    position: absolute;
+    top: 1870px; /* Controla o movimento para cima e para baixo */
+    left: 10px; /* Controla o movimento para esquerda e direita */
+    z-index: 9999; /* Garante que a imagem fique sobre os outros elementos */
+}
+
+#imagem-sobreposta6 img {
+    width: 100px; /* Ajuste o tamanho horizontal da imagem */
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+#imagem-sobreposta7 {
+    position: absolute;
+    top: 2560px;
+    left: 260px;
+    z-index: 9999;
+}
+
+#imagem-sobreposta7 img {
+    width: 100px;
+    height: auto;
+}
+
+#imagem-sobreposta8 {
+    position: absolute;
+    top: 2550px;
+    left: 10px;
+    z-index: 9999;
+}
+
+#imagem-sobreposta8 img {
+    width: 100px;
+    height: auto;
+}
+
+#imagem-sobreposta9 {
+    position: absolute;
+    top: 3900px;
+    left: 260px;
+    z-index: 9999;
+}
+
+#imagem-sobreposta9 img {
+    width: 100px;
+    height: auto;
+}
+
+#imagem-sobreposta10 {
+    position: absolute;
+    top: 3890px;
+    left: 10px;
+    z-index: 9999;
+}
+
+#imagem-sobreposta10 img {
+    width: 100px;
+    height: auto;
+}
+
+#imagem-sobreposta11 {
+    position: absolute;
+    top: 4740px;
+    left: 260px;
+    z-index: 9999;
+}
+
+#imagem-sobreposta11 img {
+    width: 100px;
+    height: auto;
+}
+
+#imagem-sobreposta12 {
+    position: absolute;
+    top: 4730px;
+    left: 10px;
+    z-index: 9999;
+}
+
+#imagem-sobreposta12 img {
+    width: 100px;
+    height: auto;
+}
+
+#imagem-sobreposta13 {
+    position: absolute;
+    top: 5415px;
+    left: 260px;
+    z-index: 9999;
+}
+
+#imagem-sobreposta13 img {
+    width: 100px;
+    height: auto;
+}
+
+#imagem-sobreposta14 {
+    position: absolute;
+    top: 5405px;
+    left: 10px;
+    z-index: 9999;
+}
+
+#imagem-sobreposta14 img {
+    width: 100px;
+    height: auto;
+}
+
+#imagem-sobreposta15 {
+    position: absolute;
+    top: 6150px;
+    left: 260px;
+    z-index: 9999;
+}
+
+#imagem-sobreposta15 img {
+    width: 100px;
+    height: auto;
+}
+
+#imagem-sobreposta16 {
+    position: absolute;
+    top: 6140px;
+    left: 10px;
+    z-index: 9999;
+}
+
+#imagem-sobreposta16 img {
+    width: 100px;
+    height: auto;
+}
+
+#imagem-sobreposta17 {
+    position: absolute;
+    top: 6830px;
+    left: 260px;
+    z-index: 9999;
+}
+
+#imagem-sobreposta17 img {
+    width: 100px;
+    height: auto;
+}
+
+#imagem-sobreposta18 {
+    position: absolute;
+    top: 6820px;
+    left: 10px;
+    z-index: 9999;
+}
+
+#imagem-sobreposta18 img {
+    width: 100px;
+    height: auto;
+}
+
+#imagem-sobreposta19 {
+    position: absolute;
+    top: 7520px;
+    left: 260px;
+    z-index: 9999;
+}
+
+#imagem-sobreposta19 img {
+    width: 100px;
+    height: auto;
+}
+
+#imagem-sobreposta20 {
+    position: absolute;
+    top: 7510px;
+    left: 10px;
+    z-index: 9999;
+}
+
+#imagem-sobreposta20 img {
+    width: 100px;
+    height: auto;
+}
+
+#imagem-sobreposta21 {
+    position: absolute;
+    top: 8175px;
+    left: 260px;
+    z-index: 9999;
+}
+
+#imagem-sobreposta21 img {
+    width: 100px;
+    height: auto;
+}
+
+#imagem-sobreposta22 {
+    position: absolute;
+    top: 8165px;
+    left: 10px;
+    z-index: 9999;
+}
+
+#imagem-sobreposta22 img {
+    width: 100px;
+    height: auto;
+}
+
+#imagem-sobreposta23 {
+    position: absolute;
+    top: 8845px;
+    left: 260px;
+    z-index: 9999;
+}
+
+#imagem-sobreposta23 img {
+    width: 100px;
+    height: auto;
+}
+
+#imagem-sobreposta24 {
+    position: absolute;
+    top: 8835px;
+    left: 10px;
+    z-index: 9999;
+}
+
+#imagem-sobreposta24 img {
+    width: 100px;
+    height: auto;
+}
+
+#imagem-sobreposta25 {
+    position: absolute;
+    top: 9731px;
+    left: 260px;
+    z-index: 9999;
+}
+
+#imagem-sobreposta25 img {
+    width: 100px;
+    height: auto;
+}
+
+#imagem-sobreposta26 {
+    position: absolute;
+    top: 9721px;
+    left: 10px;
+    z-index: 9999;
+}
+
+#imagem-sobreposta26 img {
+    width: 100px;
+    height: auto;
+}
+
+#imagem-sobreposta27 {
+    position: absolute;
+    top: 10348px;
+    left: 260px;
+    z-index: 9999;
+}
+
+#imagem-sobreposta27 img {
+    width: 100px;
+    height: auto;
+}
+
+#imagem-sobreposta28 {
+    position: absolute;
+    top: 10338px;
+    left: 10px;
+    z-index: 9999;
+}
+
+#imagem-sobreposta28 img {
+    width: 100px;
+    height: auto;
+}
+
+#imagem-sobreposta29 {
+    position: absolute;
+    top: 3200px;
+    left: 260px;
+    z-index: 9999;
+}
+
+#imagem-sobreposta29 img {
+    width: 100px;
+    height: auto;
+}
+
+#imagem-sobreposta30 {
+    position: absolute;
+    top: 3190px;
+    left: 10px;
+    z-index: 9999;
+}
+
+#imagem-sobreposta30 img {
+    width: 100px;
+    height: auto;
+}
+
+#perfil {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #ff0066;
+}
+
+#imagem-perfil {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#nome {
+    font-weight: bold;
+}
+
+/* ID */
+#id {
+    margin-top: -5px; /* Remove espaço entre "PM Casado" e "ID" */
+    font-size: 12px;
+    color: #555; /* Cor para destacar */
+}
+
+/* Horário */
+#horario {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+#calendario {
+    width: 20px;
+}
+
+/* Estilo para a imagem folha1.png dentro da postagem */
+.folha-postagem {
+    width: 100%;
+    margin-top: 20px; /* Distância da borda */
+}

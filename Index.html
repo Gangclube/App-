@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gang Club</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('fundo.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 3px 10px;
+            background: #8e44ad; /* Cor de fundo semelhante ao degradê */
+            height: 50px; /* Altura da borda */
+            border-bottom: 5px solid transparent;
+            background-image: linear-gradient(to right, #ff5db1, #8e44ad); /* Degradê da borda */
+            position: relative; /* Necessário para posicionamento absoluto */
+        }
+
+        .header .logo img {
+            height: 100px; /* Mantém o tamanho do logo */
+            width: auto;
+        }
+
+        .header .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .header .buttons a {
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .header .buttons .register {
+            background: #ff5db1;
+            color: white;
+        }
+
+        .header .buttons .register:hover {
+            background: white;
+            color: #ff5db1;
+        }
+
+        .header .buttons .login {
+            color: white;
+        }
+
+        .header .buttons .login:hover {
+            color: #ff5db1;
+        }
+
+        /* Estilo para os ícones separados */
+        .icon-left,
+        .icon-right {
+            position: absolute;
+            bottom: -55px; /* Fica logo abaixo da borda */
+        }
+
+        .icon-left {
+            left: 10px; /* Posição padrão no extremo esquerdo */
+        }
+
+        .icon-right {
+            right: 10px; /* Posição padrão no extremo direito */
+        }
+
+        .icon-left img,
+        .icon-right img {
+            height: 50px; /* Mantém a altura especificada */
+            width: auto;
+        }
+
+        /* Estilo para as imagens existentes */
+        .images {
+            text-align: center;
+            margin-top: 0; /* Sem alterações */
+        }
+
+        .images img {
+            width: 100%;
+            max-width: 500px;
+            margin-top: 0; /* Sem alterações */
+            margin-bottom: 10px; /* Sem alterações */
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="logo.png" alt="Gang Club">
+        </div>
+        <div class="buttons">
+            <a href="registro.html" class="register">Cadastre-se</a>
+            <a href="login.html" class="login">Login</a>
+        </div>
+
+        <!-- Ícones separados -->
+        <div class="icon-left">
+            <img src="18icon1.png" alt="Icone 1">
+        </div>
+        <div class="icon-right">
+            <img src="18icon2.png" alt="Icone 2">
+        </div>
+    </header>
+
+    <!-- Imagens existentes: text1.png, sexicon1.png e text2.png -->
+    <div class="images">
+        <img src="text1.png" alt="Texto 1" style="margin-top: 64px;">
+        <img src="phone.png" alt="Texto 1" 
+     style="margin-top: 150px; width: 280px; height: auto; position: absolute; left: 55px; top: 100px;">
+    </div>
+    
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bordas Animadas</title>
+  <style>
+    /* Estilizando as bordas */
+    .borda {
+      position: absolute;
+      width: 350px;
+      height: 300px;
+      border-radius: 15px;
+      border: 5px solid transparent;
+      background: linear-gradient(45deg, #ff5db1, #8e44ad);
+      background-clip: padding-box;
+      background-size: 200% 200%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      color: white;
+      font-size: 24px;
+      font-family: Arial, sans-serif;
+      box-sizing: border-box;
+      padding: 10px;
+    }
+
+    /* Ícone dentro das bordas */
+    .icon {
+      position: absolute;
+      width: 150px;  /* Tamanho do ícone (largura) */
+      height: 150px;  /* Tamanho do ícone (altura) */
+      object-fit: contain;  /* Mantém o aspecto da imagem */
+      transform-origin: top left;  /* Define o ponto de origem da transformação */
+    }
+
+    /* Texto dentro das bordas */
+    .text {
+      position: absolute;
+      font-size: 24px; /* Tamanho do texto */
+      color: white; /* Cor do texto */
+    }
+
+    /* Animações das bordas */
+    @keyframes border1-animation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes border2-animation {
+      0% { background-position: 100% 50%; }
+      50% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    @keyframes border3-animation {
+      0% { background-position: 50% 50%; }
+      50% { background-position: 0% 50%; }
+      100% { background-position: 50% 50%; }
+    }
+
+    @keyframes border4-animation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Diferentes animações e posições para cada borda */
+    .borda1 {
+      top: 840px;
+      left: 10px;
+      animation: border1-animation 3s infinite linear;
+    }
+
+    .borda2 {
+      top: 1160px;
+      left: 10px;
+      animation: border2-animation 3s infinite linear;
+    }
+
+    .borda3 {
+      top: 1480px;
+      left: 10px;
+      animation: border3-animation 3s infinite linear;
+    }
+
+    .borda4 {
+      top: 1800px;
+      left: 10px;
+      animation: border4-animation 3s infinite linear;
+    }
+
+    /* Posições independentes para ícones e textos */
+    .icon1 {
+      top: -15px;
+      left: 10px;
+    }
+    .icon2 {
+      top: -05px;
+      left: 10px;
+    }
+    .icon3 {
+      top: 10px;
+      left: 10px;
+    }
+    .icon4 {
+      top: -03px;
+      left: 10px;
+    }
+
+    .text1 {
+      top: 100px;
+      left: 10px;
+    }
+    .text2 {
+      top: 120px;
+      left: 10px;
+    }
+    .text3 {
+      top: 150px;
+      left: 10px;
+    }
+    .text4 {
+      top: 130px;
+      left: 10px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Primeira borda -->
+  <div class="borda borda1">
+    <img src="iconb.png" class="icon icon1">
+    <div class="text text1">
+      <ul>
+        <li>Suruba</li>
+        <li>Orgias</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Segunda borda -->
+  <div class="borda borda2">
+    <img src="iconc.png" class="icon icon2">
+    <div class="text text2">
+      <ul>
+        <li>Menages</li>
+        <li>Trisais</li>
+        <li>Voyeur</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Terceira borda -->
+  <div class="borda borda3">
+    <img src="icond.png" class="icon icon3">
+    <div class="text text3">
+      <ul>
+        <li>4é par</li>
+        <li>Troca de casais</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Quarta borda -->
+  <div class="borda borda4">
+    <img src="icone.png" class="icon icon4">
+    <div class="text text4">
+      <ul>
+        <li>Dual</li>
+        <li>Chamada de vídeo</li>
+      </ul>
+    </div>
+  </div>
+
+    <!-- Imagens existentes: text1.png, sexicon1.png e text2.png -->
+    <div class="images">
+          <img src="text2.png" alt="Texto 2" style="margin-top: 1900px;">
+    </div>
+    
+</body>
+</html>
